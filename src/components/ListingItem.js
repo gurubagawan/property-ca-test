@@ -13,7 +13,7 @@ const ListingItem = ({ title, price, bedrooms, bathrooms, listingImage }) => {
         <div className="listing-text">
           <p className="listing-price">${price}</p>
           <h2>{title}</h2>
-          <p style={{ marginBottom: 0 }}>
+          <p style={{ marginBottom: 0, color: '#263238' }}>
             {bedrooms} BD | {bathrooms} BA
           </p>
         </div>

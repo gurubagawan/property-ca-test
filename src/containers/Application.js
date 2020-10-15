@@ -29,7 +29,7 @@ export default class Application extends Component {
 
   render() {
     const { sortOrder, tab } = this.state;
-    let activeTabStyle = { border: '1px solid #47cdce' };
+    let activeTabStyle = { border: '1px solid #47cdce', color: '#47cdce' };
     return (
       <div>
         <div className="top-bar">
