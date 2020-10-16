@@ -9,7 +9,6 @@ import listingImage from '../images/real-estate.jpg';
 }))
 export default class Favourites extends Component {
   render() {
-    console.log(this.props);
     let sortedArray = this.props.favourites.sort((a, b) => {
       if (this.props.sortOrder === 'asc') {
         return a.price - b.price;
@@ -17,7 +16,6 @@ export default class Favourites extends Component {
         return b.price - a.price;
       }
     });
-    console.log(this.props);
     if (sortedArray.length == 0) return null;
     return (
       <div className="container">

@@ -1,8 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { addToFavoriteFunction } from '../actions';
 import starImage from '../images/star.png';
-
-// addToFavoriteFunction
 
 const ListingItem = ({
   title,
@@ -42,9 +41,15 @@ const ListingItem = ({
           </p>
         </div>
       </div>
-      <button onClick={() => addToFavoriteFunction(index)}>click</button>
+      {/* <button onClick={() => addToFavoriteFunction(index)}>click</button> */}
     </div>
   );
 };
 
-export default ListingItem;
+function mapDispatchtoProps(dispatch) {
+  return {
+    addToFavoriteFunction: () => dispatch(addToFavoriteFunction()),
+  };
+}
+
+export default connect(null, mapDispatchtoProps)(ListingItem);

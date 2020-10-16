@@ -16,7 +16,6 @@ export default class Listings extends Component {
         return b.price - a.price;
       }
     });
-    console.log(this.props.listings);
     return (
       <div className="container">
         <div className="row">
