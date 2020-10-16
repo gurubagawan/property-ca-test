@@ -1,22 +1,27 @@
-import 'babel-polyfill'
-import React from 'react'
-import { render } from 'react-dom'
+import 'babel-polyfill';
+import React from 'react';
+import { render } from 'react-dom';
 
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 
-import { Router, Route, hashHistory, IndexRedirect } from 'react-router'
+import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 
-import Application from './src/containers/Application'
-import Listings from './src/containers/Listings'
-import Favourite from './src/containers/Favourites'
+import Application from './src/containers/Application';
+import Listings from './src/containers/Listings';
+import Favourite from './src/containers/Favourites';
 
-import favourites from './src/reducers/favourites'
-import listings from './src/reducers/listings'
+import favourites from './src/reducers/favourites';
+import listings from './src/reducers/listings';
+import isFavouriteReducer from './src/reducers/isFavourite';
 
-import './index.scss'
+import './index.scss';
+import store from './store';
 
-const store = createStore(combineReducers({ favourites, listings }))
+// const store = createStore(
+//   combineReducers({ favourites, listings }),
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 render(
   <Provider store={store}>
@@ -29,4 +34,4 @@ render(
     </Router>
   </Provider>,
   document.getElementById('root')
-)
+);

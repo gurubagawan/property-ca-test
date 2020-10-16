@@ -1,4 +1,9 @@
-export default initialState = [
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import favorites from './src/reducers/favourites';
+import listings from './src/reducers/listings';
+
+const initialState = [
   {
     id: 1313456,
     property_type: 'Semi-Detached',
@@ -97,6 +102,15 @@ export default initialState = [
     bathrooms: 4,
     price: 998800,
     parking_spots: 4,
-    favorite: true,
+    favorite: false,
   },
 ];
+
+const middleware = [thunk];
+
+const store = createStore(
+  combineReducers({ listings, favorites }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;

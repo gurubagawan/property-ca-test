@@ -5,7 +5,7 @@ import ListingItem from '../components/ListingItem';
 import listingImage from '../images/real-estate.jpg';
 
 @connect((state) => ({
-  favourites: state.listings,
+  favourites: state.favorites,
 }))
 export default class Favourites extends Component {
   render() {
@@ -17,12 +17,13 @@ export default class Favourites extends Component {
         return b.price - a.price;
       }
     });
-    // console.log(this.props);
+    console.log(this.props);
+    if (sortedArray.length == 0) return null;
     return (
       <div className="container">
         <div className="row">
           {sortedArray.map((listing) => {
-            const { title, price, bedrooms, bathrooms } = listing;
+            const { title, price, bedrooms, bathrooms, favorite } = listing;
             return (
               <ListingItem
                 title={title}
@@ -30,6 +31,7 @@ export default class Favourites extends Component {
                 bedrooms={bedrooms}
                 bathrooms={bathrooms}
                 listingImage={listingImage}
+                favorite={favorite}
               />
             );
           })}

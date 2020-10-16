@@ -61,10 +61,9 @@ export default class Application extends Component {
                   onChange={this.setSort}
                   name="sortOrder"
                   id="sortOrder"
+                  defaultValue={sortOrder}
                 >
-                  <option selected="selected" value="asc">
-                    Price-Ascending
-                  </option>
+                  <option value="asc">Price-Ascending</option>
                   <option value="des">Price-Descending</option>
                 </select>
               </div>

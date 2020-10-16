@@ -16,18 +16,21 @@ export default class Listings extends Component {
         return b.price - a.price;
       }
     });
-    // console.log(this.props);
+    console.log(this.props.listings);
     return (
       <div className="container">
         <div className="row">
-          {sortedArray.map((listing) => {
-            const { title, price, bedrooms, bathrooms } = listing;
+          {sortedArray.map((listing, i) => {
+            const { title, price, bedrooms, bathrooms, favorite } = listing;
             return (
               <ListingItem
+                key={i}
+                index={i}
                 title={title}
                 price={price}
                 bedrooms={bedrooms}
                 bathrooms={bathrooms}
+                favorite={favorite}
                 listingImage={listingImage}
               />
             );

@@ -1,26 +1,39 @@
-const initialState = [];
+// import store from '../../store';
+import { ADD_FAV, REMOVE_FAV } from '../actions/types';
+import initialState from './initialState';
 
-const findFaves = (list) => {
-  list.map((item, i) => {
-    if (item.favourite) {
-      return item;
-    } else return null;
+function findFaves(list) {
+  return list.filter((item) => item.favorite == true);
+}
+
+function updateFavFlag(list, itemId, flag) {
+  return list.map((item, i) => {
+    if (i === itemId) {
+      return { ...item, favourite: flag };
+    }
   });
-};
+}
 
-export default function favourites(state = initialState, action) {
-  // console.log('this', action);
-  console.log(findFaves(state));
-  console.log('here', state);
+export default function favorites(state = initialState, action) {
+  // console.log(findFaves([{ favourite: false }, { favourite: true }]));
+  // console.log('here', store.getState());
   switch (action.type) {
-    //   case ADD_FAV: {
-    //     // Returning a new state instead of just altering the selected item
-    //     // Where payload is the id of the song you want to mark as favorite
-    //     return updateFavFlag(state, payload, true);
-    //   }
-    //   case REMOVE_FAV:
-    //     return updateFavFlag(state, payload, false);
-    default:
+    case ADD_FAV: {
+      console.log('lll');
+      // Returning a new state instead of just altering the selected item
+      updateFavFlag(state, payload, true);
+      // return findFaves(state);
       return state;
+      // Where payload is the id of the song you want to mark as favorite
+    }
+    case REMOVE_FAV:
+      updateFavFlag(state, payload, false);
+      // return findFaves(state);
+      return state;
+    default:
+      // return findFaves(state);
+      return findFaves(state);
   }
 }
+
+// export default favourites;

@@ -1,16 +1,18 @@
-const initialState = [];
+import { ADD_FAV, REMOVE_FAV } from '../actions/types';
+import initialState from './initialState';
+
+// const initialState = [];
 
 const updateFavFlag = (list, itemId, flag) => {
-  list.map((item, i) => {
-    if (item.id === itemId) {
+  console.log('ran update');
+  return list.map((item, i) => {
+    if (i === itemId) {
       return { ...item, favourite: flag };
     }
   });
 };
 
 export default function isFavouriteReducer(state = initialState, action) {
-  // console.log('this', action);
-  console.log(state);
   switch (action.type) {
     case ADD_FAV: {
       // Returning a new state instead of just altering the selected item
